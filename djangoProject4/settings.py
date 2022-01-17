@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1aah87&xdt&)7hl8)drmthy4e2r@(#g6fzk7&odioi+u8r_8k7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app1.apps.App1Config',
-    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -49,10 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
-INTERNAL_IPS = ('127.0.0.1')
 
 ROOT_URLCONF = 'djangoProject4.urls'
 
@@ -79,14 +76,24 @@ WSGI_APPLICATION = 'djangoProject4.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default' : {
+        'ENGINE': 'django.db.backends.mysql', # 고정
+        'NAME': 'mldb', # DB 이름
+        'USER': 'root', # 계정
+        'PASSWORD': 'high1234', # 암호
+        'HOST': 'database-1.cf5t92t5we65.us-east-2.rds.amazonaws.com', # IP
+        'PORT': '3306' # 별도로 설정한 게 아니라면 3306일 것이다.
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
