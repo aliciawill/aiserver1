@@ -6,13 +6,16 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    {% with 'https://high03.s3.us-east-2.amazonaws.com/static/' as  AWS_S3 %}
+    <link rel="stylesheet" type="text/css" href="{{ AWS_S3 }}bootstrap.min.css">
     <!-- pybo CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{{ AWS_S3 }}style.css">
     <!-- jQuery JS -->
-    <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+
+    <script src="{{ AWS_S3 }}jquery-3.4.1.min.js"></script>
     <!-- Bootstrap JS -->
-    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <script src="{{ AWS_S3 }}bootstrap.min.js"></script>
+    {% endwith %}
     <style>
         td {
             text-align: center;

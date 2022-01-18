@@ -9,7 +9,11 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+
+
 import pymysql
+from django.http import request
+
 pymysql.install_as_MySQLdb()
 
 from pathlib import Path
@@ -40,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app1.apps.App1Config',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -129,13 +134,23 @@ USE_L10N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+# 파일의 끝에 AWS 관련 내용을 추가
+AWS_ACCESS_KEY_ID = 'AKIASTA2AOD2IDRYC2HQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_S3_REGION_NAME = 'ap-northeast-2'
+AWS_STORAGE_BUCKET_NAME = 'high03'
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
+AWS_DEFAULT_ACL = 'public-read'
+
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+STATICFILES_STORAGE = 'djangoProject4.storage.S3StaticStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
