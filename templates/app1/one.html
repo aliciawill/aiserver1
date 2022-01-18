@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
         <!-- jQuery JS -->
-    {% with 'https://high03.s3.us-east-2.amazonaws.com/static/' as  AWS_S3 %}
-    <script src="{{ AWS_S3 }}jquery-3.4.1.min.js"></script>
-    {% endwith %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css'%}">
+    <!-- pybo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css'%}">
+    <!-- jQuery JS -->
+
+    <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'bootstrap.min.js'%}"></script>
     <script>
         $(function () {
             $('#wb').click(function () {
